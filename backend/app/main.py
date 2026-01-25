@@ -6,6 +6,7 @@ from app.core.config import settings
 from app.api.endpoints import offers,influencers,countries
 from app.db.database import create_db_and_tables,AsyncSessionLocal
 from app.db.seed.initial_seed import seed_initial_data
+from fastapi_pagination import add_pagination
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -27,9 +28,15 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+origins = [
+    "http://localhost:5173",  
+    "http://127.0.0.1:5173",
+]
+
+add_pagination(app)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS,
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

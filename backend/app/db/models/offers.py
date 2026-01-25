@@ -12,13 +12,14 @@ class Offer(Base):
     title = Column(String, nullable=False)
     description = Column(Text)
     is_active=Column(Boolean,default=True)
+    image_url=Column(String, nullable=True)
     payout_type = Column(
         SAEnum(PayoutType, name="payout_type_enum"),
         nullable=False,
         default="CPA"
     )
-    amount=Column(Float,default=0.0)
-
+    cpa_amount=Column(Float,default=0.0)
+    fixed_amount=Column(Float,default=0.0)
     influencer_custom_payouts = relationship(
         "InfluencerCustomPayouts",
         back_populates="offer"

@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     #postgresql+asyncpg://<username>:<password>@<host>:<port>/<database>
 
     DATABASE_URL:str="postgresql+asyncpg://postgres:naveenpranesh@localhost:5432/adcash"
-    ALLOWED_ORIGINS:str=""
+    ALLOWED_ORIGINS:str="http://localhost:5732,http://localhost:5733,http://localhost:3000,http://localhost:3001"
     ENV: str = "dev" 
 
     def __init__(self,**values):

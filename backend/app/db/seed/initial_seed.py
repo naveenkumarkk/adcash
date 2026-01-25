@@ -44,39 +44,41 @@ async def seed_initial_data(session: AsyncSession):
     await session.flush()  
 
     offers = [
-        {"title":"Tech Promotion Offer1","description":"Lorel Ipsum","categories":["Tech"],"country":"GLB","amount":20,"payout_type":"CPA","influencer_list":[{"influencer":"Tech Influencer 1","custom_amount":60},{"influencer":"Tech Influencer 2","custom_amount":100}]},
-        {"title":"Tech Promotion Offer2","description":"Lorel Ipsum","categories":["Tech"],"country":"GLB","amount":20,"payout_type":"FIXED"},
-        {"title":"Tech Promotion Offer3","description":"Lorel Ipsum","categories":["Tech"],"country":"Germany","amount":30,"payout_type":"CPA_FIXED"},
-        {"title":"Tech Promotion Offer4","description":"Lorel Ipsum","categories":["Tech"],"country":"GLB","amount":20,"payout_type":"FIXED"},
-        {"title":"Tech Promotion Offer5","description":"Lorel Ipsum","categories":["Tech"],"country":"GLB","amount":20,"payout_type":"CPA"},
-        {"title":"Food Promotion Offer1","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"GLB","amount":20,"payout_type":"CPA"},
-        {"title":"Food Promotion Offer2","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"GLB","amount":20,"payout_type":"FIXED"},
-        {"title":"Food Promotion Offer3","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"Germany","amount":30,"payout_type":"CPA","influencer_list":[{"influencer":"Food Influencer 1","custom_amount":60},{"influencer":"Food Influencer 2","custom_amount":100}]},
-        {"title":"Food Promotion Offer4","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"GLB","amount":20,"payout_type":"CPA_FIXED"},
-        {"title":"Food Promotion Offer5","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"GLB","amount":20,"payout_type":"FIXED","influencer_list":[{"influencer":"Food Influencer 3","custom_amount":60},{"influencer":"Food Influencer 4","custom_amount":100}]},
-        {"title":"Fashion Promotion Offer1","description":"Lorel Ipsum","categories":["Fashion"],"country":"GLB","amount":20,"payout_type":"CPA"},
-        {"title":"Fashion Promotion Offer2","description":"Lorel Ipsum","categories":["Fashion"],"country":"GLB","amount":20,"payout_type":"FIXED"},
-        {"title":"Fashion Promotion Offer3","description":"Lorel Ipsum","categories":["Fashion"],"country":"Germany","amount":30,"payout_type":"CPA_FIXED"},
-        {"title":"Fashion Promotion Offer4","description":"Lorel Ipsum","categories":["Fashion"],"country":"GLB","amount":20,"payout_type":"CPA"},
-        {"title":"Fashion Promotion Offer5","description":"Lorel Ipsum","categories":["Fashion"],"country":"GLB","amount":20,"payout_type":"FIXED"},
-        {"title":"Finance Promotion Offer1","description":"Lorel Ipsum","categories":["Finance"],"country":"GLB","amount":20,"payout_type":"CPA_FIXED"},
-        {"title":"Finance Promotion Offer2","description":"Lorel Ipsum","categories":["Finance"],"country":"GLB","amount":20,"payout_type":"CPA"},
-        {"title":"Finance Promotion Offer3","description":"Lorel Ipsum","categories":["Finance"],"country":"Germany","amount":30,"payout_type":"FIXED","influencer_list":[{"influencer":"Finance Influencer 1","custom_amount":60},{"influencer":"Finance Influencer 2","custom_amount":100}]},
-        {"title":"Finance Promotion Offer4","description":"Lorel Ipsum","categories":["Finance"],"country":"GLB","amount":20,"payout_type":"CPA_FIXED","influencer_list":[{"influencer":"Finance Influencer 3","custom_amount":60},{"influencer":"Finance Influencer 4","custom_amount":100}]},
-        {"title":"Finance Promotion Offer5","description":"Lorel Ipsum","categories":["Finance"],"country":"GLB","amount":20,"payout_type":"CPA"},
-        {"title":"Gaming Promotion Offer1","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"GLB","amount":20,"payout_type":"FIXED","influencer_list":[{"influencer":"Tech Influencer 1","custom_amount":60},{"influencer":"Tech Influencer 2","custom_amount":100}]},
-        {"title":"Gaming Promotion Offer2","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"Germany","amount":30,"payout_type":"CPA"},
-        {"title":"Gaming Promotion Offer3","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"GLB","amount":20,"payout_type":"CPA_FIXED"},
-        {"title":"Gaming Promotion Offer4","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"GLB","amount":20,"payout_type":"CPA","influencer_list":[{"influencer":"Tech Influencer 3","custom_amount":60},{"influencer":"Tech Influencer 4","custom_amount":100}]},
-        {"title":"Gaming Promotion Offer5","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"GLB","amount":20,"payout_type":"FIXED"}
+        {"title":"Tech Promotion Offer1","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Tech"],"country":"GLB","fixed_amount":0,"cpa_amount":20,"payout_type":"CPA","influencer_list":[{"influencer":"Tech Influencer 1","custom_amount":60},{"influencer":"Tech Influencer 2","custom_amount":100}]},
+        {"title":"Tech Promotion Offer2","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Tech"],"country":"GLB","fixed_amount":20,"cpa_amount":0,"payout_type":"FIXED"},
+        {"title":"Tech Promotion Offer3","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Tech"],"country":"Germany","fixed_amount":10,"cpa_amount":30,"payout_type":"CPA_FIXED"},
+        {"title":"Tech Promotion Offer4","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Tech"],"country":"GLB","fixed_amount":20,"cpa_amount":0,"payout_type":"FIXED"},
+        {"title":"Tech Promotion Offer5","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Tech"],"country":"GLB","fixed_amount":0,"cpa_amount":20,"payout_type":"CPA"},
+        {"title":"Food Promotion Offer1","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"GLB","fixed_amount":0,"cpa_amount":20,"payout_type":"CPA"},
+        {"title":"Food Promotion Offer2","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"GLB","fixed_amount":10,"cpa_amount":0,"payout_type":"FIXED"},
+        {"title":"Food Promotion Offer3","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"Germany","fixed_amount":0,"cpa_amount":30,"payout_type":"CPA","influencer_list":[{"influencer":"Food Influencer 1","custom_amount":60},{"influencer":"Food Influencer 2","custom_amount":100}]},
+        {"title":"Food Promotion Offer4","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"GLB","fixed_amount":10,"cpa_amount":20,"payout_type":"CPA_FIXED"},
+        {"title":"Food Promotion Offer5","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Health","Nutrition"],"country":"GLB","fixed_amount":20,"cpa_amount":0,"payout_type":"FIXED","influencer_list":[{"influencer":"Food Influencer 3","custom_amount":60},{"influencer":"Food Influencer 4","custom_amount":100}]},
+        {"title":"Fashion Promotion Offer1","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Fashion"],"country":"GLB","fixed_amount":0,"cpa_amount":20,"payout_type":"CPA"},
+        {"title":"Fashion Promotion Offer2","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Fashion"],"country":"GLB","fixed_amount":20,"cpa_amount":0,"payout_type":"FIXED"},
+        {"title":"Fashion Promotion Offer3","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Fashion"],"country":"Germany","fixed_amount":10,"cpa_amount":30,"payout_type":"CPA_FIXED"},
+        {"title":"Fashion Promotion Offer4","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Fashion"],"country":"GLB","fixed_amount":0,"cpa_amount":20,"payout_type":"CPA"},
+        {"title":"Fashion Promotion Offer5","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Fashion"],"country":"GLB","fixed_amount":10,"cpa_amount":0,"payout_type":"FIXED"},
+        {"title":"Finance Promotion Offer1","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Finance"],"country":"GLB","fixed_amount":10,"cpa_amount":20,"payout_type":"CPA_FIXED"},
+        {"title":"Finance Promotion Offer2","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Finance"],"country":"GLB","fixed_amount":0,"cpa_amount":20,"payout_type":"CPA"},
+        {"title":"Finance Promotion Offer3","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Finance"],"country":"Germany","fixed_amount":10,"cpa_amount":0,"payout_type":"FIXED","influencer_list":[{"influencer":"Finance Influencer 1","custom_amount":60},{"influencer":"Finance Influencer 2","custom_amount":100}]},
+        {"title":"Finance Promotion Offer4","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Finance"],"country":"GLB","fixed_amount":10,"cpa_amount":20,"payout_type":"CPA_FIXED","influencer_list":[{"influencer":"Finance Influencer 3","custom_amount":60},{"influencer":"Finance Influencer 4","custom_amount":100}]},
+        {"title":"Finance Promotion Offer5","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Finance"],"country":"GLB","fixed_amount":0,"cpa_amount":20,"payout_type":"CPA"},
+        {"title":"Gaming Promotion Offer1","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"GLB","fixed_amount":30,"cpa_amount":0,"payout_type":"FIXED","influencer_list":[{"influencer":"Tech Influencer 1","custom_amount":60},{"influencer":"Tech Influencer 2","custom_amount":100}]},
+        {"title":"Gaming Promotion Offer2","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"Germany","fixed_amount":0,"cpa_amount":30,"payout_type":"CPA"},
+        {"title":"Gaming Promotion Offer3","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"GLB","fixed_amount":10,"cpa_amount":20,"payout_type":"CPA_FIXED"},
+        {"title":"Gaming Promotion Offer4","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"GLB","fixed_amount":0,"cpa_amount":20,"payout_type":"CPA","influencer_list":[{"influencer":"Tech Influencer 3","custom_amount":60},{"influencer":"Tech Influencer 4","custom_amount":100}]},
+        {"title":"Gaming Promotion Offer5","image_url":"https://picsum.photos/id/237/200/300","description":"Lorel Ipsum","categories":["Gaming","Tech"],"country":"GLB","fixed_amount":20,"cpa_amount":0,"payout_type":"FIXED"}
     ]
 
-
+    image_id = 1
     for off in offers:
+        img_url = off['image_url'].replace("id",str(image_id))
+        image_id+=1
         result = await session.execute(select(Offer).where(Offer.title == off['title']))
         offer = result.scalar_one_or_none()
         if not offer:
-            offer = Offer(title=off['title'], description=off['description'],amount=off['amount'],payout_type=off['payout_type'])
+            offer = Offer(title=off['title'], image_url=img_url,description=off['description'],cpa_amount=off['cpa_amount'],fixed_amount=off['fixed_amount'],payout_type=off['payout_type'])
             session.add(offer)
             await session.flush()
 

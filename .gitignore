@@ -7,3 +7,5 @@
 /backend/app/db/seed/__pycache__
 /backend/app/services/__pycache__
 /backend/app/api/__pycache__
+/backend/alembic/__pycache__
+/node_modules
