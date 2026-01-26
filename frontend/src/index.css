@@ -22,6 +22,8 @@
     --text: 246 76% 4.9%;
     --accent: 245 75% 54.5%;
     --accent2: 40 98.2% 43.7%;
+    --redaccent: 349.9 89.9% 61%;
+
 
     /* utils */
     --space-sm: clamp(0.4rem, 1.5vw, .8rem);

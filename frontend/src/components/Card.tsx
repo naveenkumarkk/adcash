@@ -1,46 +1,49 @@
-import type { Key } from "react"
-import type { CardInterface } from "../types"
-import { Badge } from "./Badge"
-import { Button } from "./Button"
-import styles from './Card.module.css'
+/**
+ * Card Component
+ * Displays an offer card with details and badges
+ */
 
-export const Card: React.FC<CardInterface> = ({
-    title,
-    body,
-    image,
-    category_badges,
-    payoutType,
-    amount,
-    // indicator 
-}) => {
-    return (
-        <article className={`stack-sm ${styles.card}`}>
-            {/* {indicator && <small className={styles.indicator}>{indicator}</small>} */}
-            {image && <img src={image} alt={title} className={styles.image} />}
-            <h3 className={styles.title}>{title}</h3>
-            <p className={styles.body}>{body}</p>
-            {(payoutType) && (
-                <small className={styles.subtitle}>
-                    <strong>Payout Type:</strong>{" "}
-                    <Badge text={payoutType}></Badge>
+import type { CardProps, BadgeData } from "../types";
+import { Badge } from "./Badge";
+import styles from "./Card.module.css";
 
-                </small>
-            )}
-            {
-                (amount) && (
-                    <small className={styles.subtitle}>
-                        <strong>Amount:</strong>{" "}{amount}
-                    </small>
-                )
-            }
+export function Card({
+  title,
+  body,
+  image,
+  categoryBadges,
+  payoutType,
+  amount,
+  indicator,
+}: CardProps) {
+  return (
+    <article className={`stack-sm ${styles.card}`}>
+      {indicator && <small className={styles.indicator}>{indicator}</small>}
+      
+      {image && <img src={image} alt={title} className={styles.image} />}
+      
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.body}>{body}</p>
 
-            {category_badges && (
-                <div className={styles.badgeRow}>
-                    {category_badges.map((b: { text: String; filled: Boolean | undefined }, i: Key | null | undefined) => (
-                        <Badge key={i} text={b.text} filled={b.filled} />
-                    ))}
-                </div>
-            )}
-        </article>
-    )
+      {payoutType && (
+        <small className={styles.subtitle}>
+          <strong>Payout Type:</strong> <Badge text={payoutType} />
+        </small>
+      )}
+
+      {amount && (
+        <small className={styles.subtitle}>
+          <strong>Amount:</strong> {amount}
+        </small>
+      )}
+
+      {categoryBadges && categoryBadges.length > 0 && (
+        <div className={styles.badgeRow}>
+          {categoryBadges.map((badge: BadgeData, index: number) => (
+            <Badge key={index} text={badge.text} filled={badge.filled} />
+          ))}
+        </div>
+      )}
+    </article>
+  );
 }
