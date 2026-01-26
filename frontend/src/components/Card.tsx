@@ -11,7 +11,8 @@ export const Card: React.FC<CardInterface> = ({
     category_badges,
     payoutType,
     amount,
-    indicator }) => {
+    // indicator 
+}) => {
     return (
         <article className={`stack-sm ${styles.card}`}>
             {/* {indicator && <small className={styles.indicator}>{indicator}</small>} */}

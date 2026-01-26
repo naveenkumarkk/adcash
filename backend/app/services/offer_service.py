@@ -98,20 +98,26 @@ async def get_all_offer(
     country = None
     country_cpa_amount = None
 
-    if params.country and params.country != "GLB":
-        result = await db.execute(select(Country).where(Country.code == params.country))
+    if params.country:
+        result = await db.execute(
+            select(Country).where(Country.id == params.country)
+        )
         country = result.scalar_one_or_none()
-        if country:
+        if country and country.code !='GLB':
             country_cpa_amount = country.cpa_amount
 
     query = (
         select(Offer)
         .options(
-            selectinload(Offer.offer_categories).selectinload(OfferCategories.category)
+            selectinload(Offer.offer_categories)
+            .selectinload(OfferCategories.category)
         )
         .where(Offer.is_active.is_(True))
         .order_by(Offer.id.desc())
     )
+
+    if params.title:
+        query = query.where(Offer.title.ilike(f"%{params.title}%"))
 
     result = await db.execute(query)
     offers = result.scalars().all()
@@ -120,22 +126,24 @@ async def get_all_offer(
 
     for offer in offers:
         payout_type = offer.payout_type
-        amount = offer.cpa_amount or 0
+        amount = f"${offer.cpa_amount or 0}"
 
         if payout_type == PayoutType.FIXED:
-            amount = offer.fixed_amount or 0
+            amount = f"${offer.fixed_amount or 0}"
+
         elif payout_type == PayoutType.CPA and country_cpa_amount:
             if offer.cpa_amount != country_cpa_amount:
                 min_amt = min(offer.cpa_amount, country_cpa_amount)
                 max_amt = max(offer.cpa_amount, country_cpa_amount)
-                amount = f"{min_amt} - {max_amt}"
+                amount = f"${min_amt} - ${max_amt}"
+
         elif payout_type == PayoutType.CPA_FIXED:
             if country_cpa_amount and offer.cpa_amount != country_cpa_amount:
                 min_amt = min(offer.cpa_amount, country_cpa_amount)
                 max_amt = max(offer.cpa_amount, country_cpa_amount)
-                amount = f"{min_amt} - {max_amt} (CPA) + {offer.fixed_amount} (Fixed)"
+                amount = f"${min_amt} - ${max_amt} (CPA) + ${offer.fixed_amount} (Fixed)"
             else:
-                amount = f"{country_cpa_amount or offer.cpa_amount} (CPA) + {offer.fixed_amount} (Fixed)"
+                amount = f"${country_cpa_amount or offer.cpa_amount} (CPA) + ${offer.fixed_amount} (Fixed)"
 
         if params.influencer_id:
             result = await db.execute(
@@ -146,7 +154,7 @@ async def get_all_offer(
             )
             custom = result.scalar_one_or_none()
             if custom:
-                amount = f"{custom.amount}"
+                amount = f"${custom.amount}"
                 payout_type = PayoutType.CUSTOM
 
         categories_list = [
@@ -169,7 +177,6 @@ async def get_all_offer(
         )
 
     return paginate(items)
-
 
 def get_offer(db: Session, offer_id: UUID):
     return

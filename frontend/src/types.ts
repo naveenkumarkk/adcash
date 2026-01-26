@@ -15,6 +15,10 @@ export interface ButtonInterface {
 export interface Category {
   name: string
 }
+export interface Country {
+  id: number
+  code: string
+}
 export interface Offer {
   id: number
   title: string

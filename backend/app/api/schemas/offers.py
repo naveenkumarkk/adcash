@@ -35,7 +35,7 @@ class OfferUpdate(BaseModel):
 class OfferSearch(BaseModel):
     id:Optional[UUID] = None
     title: Optional[str] = None
-    country: Optional[str] = None
+    country: Optional[int] = None
     influencer_id: UUID | None = None
 
 class OfferResponse(BaseModel):

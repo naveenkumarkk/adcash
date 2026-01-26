@@ -2,9 +2,133 @@
   min-height: 100vh;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  font-size: var(--fs-300);
+  font-weight: 600;
+  background-color: hsl(var(--accent));
+  color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.home-link {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.title {
+  cursor: default;
+}
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   padding: 1.5rem;
+}
+
+.offers-page {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.offers-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  min-width: 260px;
+  max-width: 420px;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid hsl(var(--mutated));
+  border-radius: var(--round-md);
+  font-size: var(--fs-200);
+  background-color: #fff;
+}
+
+.country-select {
+  min-width: 160px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid hsl(var(--mutated));
+  border-radius: var(--round-md);
+  font-size: var(--fs-200);
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.search-button {
+  padding: 0.65rem 1.2rem;
+  border: 1px solid hsl(var(--accent));
+  border-radius: var(--round-md);
+  background: hsl(var(--accent));
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+}
+
+.search-button:is(:hover, :focus-visible) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px hsl(var(--accent) / 0.25);
+}
+
+.search-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.offers-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.page-button {
+  padding: 0.55rem 1.1rem;
+  border: 1px solid hsl(var(--mutated));
+  border-radius: var(--round-md);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+}
+
+.page-button:is(:hover, :focus-visible) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px hsl(var(--accent) / 0.2);
+}
+
+.page-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.page-indicator {
+  font-weight: 600;
+  color: hsl(var(--text));
 }
