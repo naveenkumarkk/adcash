@@ -1,8 +1,3 @@
-/**
- * App Component
- * Main application component with routing
- */
-
 import "./App.css";
 import { OffersPage } from "./components/OfferPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

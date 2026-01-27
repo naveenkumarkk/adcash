@@ -1,16 +1,8 @@
-/**
- * Custom React Hooks
- * Reusable hooks for data fetching and state management
- */
-
 import { useState, useEffect } from "react";
 import { fetchCountries, fetchInfluencers, fetchOffers } from "../services/api.service";
 import { DEFAULTS, PAGINATION } from "../config/constants";
-import type { Country, Influencer, Offer } from "../types";
+import type { Country, Influencer, Offer } from "../types/index";
 
-/**
- * Hook to fetch and manage countries
- */
 export function useCountries() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [selectedCountryId, setSelectedCountryId] = useState<string>("");
@@ -27,8 +19,6 @@ export function useCountries() {
         
         if (isMounted) {
           setCountries(data);
-
-          // Auto-select global country if available
           const globalCountry = data.find((c) => c.code === DEFAULTS.COUNTRY_CODE);
           if (globalCountry) {
             setSelectedCountryId(String(globalCountry.id));
@@ -61,9 +51,6 @@ export function useCountries() {
   };
 }
 
-/**
- * Hook to fetch and manage influencers
- */
 export function useInfluencers() {
   const [influencers, setInfluencers] = useState<Influencer[]>([]);
   const [selectedInfluencerId, setSelectedInfluencerId] = useState<string>("");
@@ -108,9 +95,6 @@ export function useInfluencers() {
   };
 }
 
-/**
- * Hook to fetch and manage offers with pagination and filters
- */
 export function useOffers(
   searchQuery: string,
   countryId: string,

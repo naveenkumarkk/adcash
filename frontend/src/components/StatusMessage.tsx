@@ -1,8 +1,3 @@
-/**
- * StatusMessage Component
- * Displays loading, error, or empty state messages
- */
-
 import { STATUS_MESSAGES } from "../config/constants";
 
 interface StatusMessageProps {

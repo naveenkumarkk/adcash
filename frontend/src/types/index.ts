@@ -1,10 +1,3 @@
-/**
- * Core Type Definitions
- * Centralized type definitions for the entire application
- */
-
-// ==================== Component Props ====================
-
 export interface BadgeProps {
   text: string;
   filled?: boolean;
@@ -19,8 +12,6 @@ export interface CardProps {
   image?: string;
   indicator: string | boolean;
 }
-
-// ==================== Domain Models ====================
 
 export interface Category {
   id?: number;
@@ -47,14 +38,10 @@ export interface Offer {
   amount: string;
 }
 
-// ==================== Helper Types ====================
-
 export interface BadgeData {
   text: string;
   filled: boolean;
 }
-
-// ==================== API Response Types ====================
 
 export interface PaginatedResponse<T> {
   items: T[];
@@ -69,7 +56,6 @@ export interface ApiError {
   status?: number;
 }
 
-// ==================== Search/Filter Types ====================
 
 export interface OfferFilters {
   title?: string;

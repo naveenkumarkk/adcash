@@ -1,9 +1,4 @@
-/**
- * Card Component
- * Displays an offer card with details and badges
- */
-
-import type { CardProps, BadgeData } from "../types";
+import type { CardProps, BadgeData } from "../types/index";
 import { Badge } from "./Badge";
 import styles from "./Card.module.css";
 

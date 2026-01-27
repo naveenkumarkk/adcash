@@ -1,0 +1,15 @@
+FROM node:18.15.0
+
+
+ENV TZ=Europe/Tallinn
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN yarn install --ignore-scripts
+
+EXPOSE 8000
+
+CMD ["yarn", "start:dev"]

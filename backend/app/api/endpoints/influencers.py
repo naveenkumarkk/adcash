@@ -1,8 +1,3 @@
-"""
-Influencer API Endpoints
-Handles all influencer-related HTTP requests
-"""
-
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
@@ -21,14 +16,5 @@ router = APIRouter()
     description="Retrieve a list of all influencers",
 )
 async def get_influencers(db: AsyncSession = Depends(get_async_session)):
-    """
-    Get all influencers.
-    
-    Args:
-        db: Database session
-        
-    Returns:
-        List of all influencers
-    """
     influencers = await get_all_influencers(db)
     return influencers

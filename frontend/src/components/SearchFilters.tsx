@@ -1,11 +1,6 @@
-/**
- * SearchFilters Component
- * Handles search input and filter dropdowns
- */
-
 import type { FormEvent } from "react";
 import { ARIA_LABELS, DEFAULTS } from "../config/constants";
-import type { Country, Influencer } from "../types";
+import type { Country, Influencer } from "../types/index";
 
 interface SearchFiltersProps {
   searchInput: string;

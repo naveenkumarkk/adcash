@@ -1,8 +1,3 @@
-/**
- * OffersPage Component
- * Main page for displaying and filtering offers
- */
-
 import { useState, type FormEvent } from "react";
 import { useCountries, useInfluencers, useOffers } from "../hooks/useData";
 import { clamp } from "../lib/utils";
@@ -13,12 +8,10 @@ import { Pagination } from "./Pagination";
 import { PAGINATION } from "../config/constants";
 
 export const OffersPage: React.FC = () => {
-  // Search state
   const [searchInput, setSearchInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [page, setPage] = useState(PAGINATION.DEFAULT_PAGE);
+  const [page, setPage] = useState<number>(PAGINATION.DEFAULT_PAGE);
 
-  // Data hooks
   const {
     countries,
     selectedCountryId,
@@ -38,7 +31,6 @@ export const OffersPage: React.FC = () => {
     error,
   } = useOffers(searchQuery, selectedCountryId, selectedInfluencerId, page);
 
-  // Event handlers
   const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setPage(PAGINATION.DEFAULT_PAGE);

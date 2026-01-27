@@ -9,3 +9,5 @@
 /backend/app/api/__pycache__
 /backend/alembic/__pycache__
 /node_modules
+/backend/tests/__pycache__
+/backend/tests/api/__pycache__

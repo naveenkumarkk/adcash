@@ -5,7 +5,7 @@
 
 import { Card } from "./Card";
 import { categoriesToBadges, getPayoutIndicator } from "../lib/utils";
-import type { Offer } from "../types";
+import type { Offer } from "../types/index";
 
 interface OffersGridProps {
   offers: Offer[];

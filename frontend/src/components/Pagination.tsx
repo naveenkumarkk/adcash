@@ -1,8 +1,3 @@
-/**
- * Pagination Component
- * Handles page navigation controls
- */
-
 import { ARIA_LABELS } from "../config/constants";
 
 interface PaginationProps {

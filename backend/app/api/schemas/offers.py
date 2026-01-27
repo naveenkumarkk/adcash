@@ -1,16 +1,11 @@
 from typing import List, Optional
 from decimal import Decimal
 from uuid import UUID
-from pydantic import BaseModel
-
+from pydantic import BaseModel, ConfigDict
 from app.api.schemas.categories import CategoryResponse
+from app.api.schemas.influencers import InfluencerResponse
 from app.api.schemas.country import CountryResponse
 from app.core.enums import PayoutType
-
-
-class InfluencerPayoutCreate(BaseModel):
-    influencer_id: UUID
-    custom_amount: Decimal
 
 class OfferCreate(BaseModel):
     title: str
@@ -18,8 +13,9 @@ class OfferCreate(BaseModel):
     categories: List[int]
     image_url:str|None
     payout_type: PayoutType
-    influencer_list:Optional[List[InfluencerPayoutCreate]] = []
-    amount:Optional[Decimal] = 0.0
+    influencer_list:Optional[List[InfluencerResponse]] = []
+    cpa_amount:Optional[Decimal] = 0.0
+    fixed_amount:Optional[Decimal] = 0.0
 
 
 class OfferUpdate(BaseModel):
@@ -28,9 +24,12 @@ class OfferUpdate(BaseModel):
     description: Optional[str] = None
     image_url:Optional[str]|None
     categories: Optional[List[int]] = None
-    payout: Optional[PayoutType] = None
+    payout_type: Optional[PayoutType] = None
     country: Optional[int] = None
-    amount:Optional[Decimal]
+    cpa_amount:Optional[Decimal]
+    fixed_amount:Optional[Decimal]
+    influencer_list:Optional[List[InfluencerResponse]]=[]
+
 
 class OfferSearch(BaseModel):
     id:Optional[UUID] = None
@@ -51,3 +50,15 @@ class OfferResponse(BaseModel):
     class Config:
         orm_mode = True
 
+class OfferIdResponse(BaseModel):
+    id: UUID
+    title: str
+    description: str
+    image_url: str | None
+    categories: List[CategoryResponse]
+    payout_type: PayoutType
+    cpa_amount: Decimal
+    fixed_amount: Decimal
+    influencer_list: List[InfluencerResponse]
+
+    model_config = ConfigDict(from_attributes=True)

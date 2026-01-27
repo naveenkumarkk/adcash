@@ -1,14 +1,6 @@
-/**
- * API Service Layer
- * Handles all HTTP requests and API communication
- */
-
 import { API_CONFIG } from "../config/constants";
-import type { Country, Influencer, Offer, PaginatedResponse } from "../types";
+import type { Country, Influencer, Offer, PaginatedResponse } from "../types/index";
 
-/**
- * Base fetch wrapper with error handling
- */
 async function apiFetch<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const url = `${API_CONFIG.BASE_URL}${endpoint}`;
   
@@ -32,25 +24,16 @@ async function apiFetch<T>(endpoint: string, options?: RequestInit): Promise<T> 
   }
 }
 
-/**
- * Fetch all countries
- */
 export async function fetchCountries(): Promise<Country[]> {
   const data = await apiFetch<Country[] | { items: Country[] }>("/country/all");
   return Array.isArray(data) ? data : data?.items || [];
 }
 
-/**
- * Fetch all influencers
- */
 export async function fetchInfluencers(): Promise<Influencer[]> {
   const data = await apiFetch<Influencer[] | { items: Influencer[] }>("/influencer/all");
   return Array.isArray(data) ? data : data?.items || [];
 }
 
-/**
- * Fetch offers with filters
- */
 export async function fetchOffers(params: {
   title?: string;
   countryId?: string;
@@ -69,7 +52,6 @@ export async function fetchOffers(params: {
   const endpoint = `/offers/all?${searchParams.toString()}`;
   const data = await apiFetch<any>(endpoint);
 
-  // Normalize response
   const items = Array.isArray(data) ? data : data?.items || [];
   const pages = typeof data === "object" && data ? (data as any).pages : 1;
 

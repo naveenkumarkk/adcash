@@ -1,9 +1,4 @@
-/**
- * Badge Component
- * Displays a badge with optional filled state
- */
-
-import type { BadgeProps } from "../types";
+import type { BadgeProps } from "../types/index";
 import styles from "./Badge.module.css";
 
 export function Badge({ text, filled = false }: BadgeProps) {
