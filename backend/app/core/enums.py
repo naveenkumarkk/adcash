@@ -1,4 +1,4 @@
-# app/domain/enums.py
+
 from enum import Enum
 
 class PayoutType(str, Enum):

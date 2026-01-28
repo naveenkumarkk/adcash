@@ -57,12 +57,9 @@ LOGGING_CONFIG = {
 
 
 def setup_logging() -> None:
-    """Configure logging for the application."""
-    # Create logs directory if it doesn't exist
     Path("logs").mkdir(exist_ok=True)
     logging.config.dictConfig(LOGGING_CONFIG)
 
 
 def get_logger(name: str) -> logging.Logger:
-    """Get a logger instance by name."""
     return logging.getLogger(name)
