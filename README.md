@@ -1,4 +1,4 @@
-# Assignment for Full Stack Developer (Back-end focus)
+# Offer Selection 
 Offers are used to promote specific products on behalf of brands or advertisers.
 Influencers can browse available offers and see how they would be paid for promoting
 them.
