@@ -8,9 +8,15 @@ from app.services.offer_service import (
     update_existing_offer,
     get_filtered_offers,
     get_offer_by_id,
-    delete_offer_by_id
+    delete_offer_by_id,
 )
-from app.api.schemas.offers import OfferCreate, OfferResponse, OfferUpdate, OfferSearch, OfferIdResponse
+from app.api.schemas.offers import (
+    OfferCreate,
+    OfferResponse,
+    OfferUpdate,
+    OfferSearch,
+    OfferIdResponse,
+)
 from fastapi_pagination import Page
 
 router = APIRouter()
@@ -28,7 +34,7 @@ async def create_offer(
     db: AsyncSession = Depends(get_async_session),
 ):
     created = await create_new_offer(db, payload)
-   
+
     return await get_offer_by_id(db, created.id)
 
 
@@ -49,7 +55,7 @@ async def update_offer(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Offer with ID {offer_id} not found",
         )
-    # Return hydrated response with categories and influencers
+
     return await get_offer_by_id(db, offer_id)
 
 
@@ -94,4 +100,4 @@ async def get_offer(
 )
 async def delete_offer(offer_id: UUID, db: AsyncSession = Depends(get_async_session)):
     await delete_offer_by_id(db, offer_id)
-    return {"mesage":"Offer deleted"}
+    return {"mesage": "Offer deleted"}

@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from collections.abc import AsyncGenerator
 from app.core.config import settings
-from app.db.models import *
+from app.db.models import *  # noqa: F403
 from app.db.base import Base
 
 
